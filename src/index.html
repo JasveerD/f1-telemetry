@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1 Telemetry Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>F1 Telemetry</h1>
+      <a href="https://jasveerd.github.io" class="back-link">&larr; Home</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Session Picker -->
+    <section id="session-picker" class="card">
+      <h2>Select Session</h2>
+      <div class="picker-row">
+        <select id="year-select"></select>
+        <select id="gp-select"><option>Select GP</option></select>
+        <select id="session-select">
+          <option value="race">Race</option>
+          <option value="qualifying">Qualifying</option>
+        </select>
+        <button id="load-btn">Load</button>
+      </div>
+    </section>
+
+    <!-- Driver Selector -->
+    <section id="driver-selector" class="card hidden">
+      <h2>Drivers</h2>
+      <div id="driver-chips"></div>
+    </section>
+
+    <!-- Lap Times Chart -->
+    <section id="lap-times-section" class="card hidden">
+      <h2>Lap Times</h2>
+      <div id="lap-times-chart"></div>
+    </section>
+
+    <!-- Speed Trace -->
+    <section id="speed-trace-section" class="card hidden">
+      <h2>Speed Trace — Fastest Lap</h2>
+      <div id="speed-trace-chart"></div>
+    </section>
+
+    <!-- Throttle / Brake / Gear -->
+    <section id="telemetry-section" class="card hidden">
+      <h2>Throttle / Brake / Gear</h2>
+      <div id="throttle-chart"></div>
+      <div id="brake-chart"></div>
+      <div id="gear-chart"></div>
+    </section>
+
+    <!-- Tire Strategy -->
+    <section id="strategy-section" class="card hidden">
+      <h2>Tire Strategy</h2>
+      <div id="strategy-chart"></div>
+    </section>
+  </main>
+
+  <script src="charts/config.js"></script>
+  <script src="charts/lap-times.js"></script>
+  <script src="charts/speed-trace.js"></script>
+  <script src="charts/telemetry.js"></script>
+  <script src="charts/strategy.js"></script>
+  <script src="components/picker.js"></script>
+  <script src="components/drivers.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
