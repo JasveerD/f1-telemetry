@@ -196,7 +196,7 @@ function renderStrategy(data) {
 /* === Picker === */
 async function loadIndex() {
   try {
-    const resp = await fetch("../data/index.json");
+    const resp = await fetch("data/index.json");
     const index = await resp.json();
     return index;
   } catch {
@@ -280,7 +280,7 @@ function updateCharts(drivers) {
 }
 
 async function loadSession(year, gp, session) {
-  const url = `../data/${year}/${gp}/${session}.json`;
+  const url = `data/${year}/${gp}/${session}.json`;
   try {
     const resp = await fetch(url);
     if (!resp.ok) throw new Error(`No data found (${resp.status})`);
