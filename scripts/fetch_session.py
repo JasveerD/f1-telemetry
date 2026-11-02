@@ -25,6 +25,19 @@ def setup_cache():
     fastf1.Cache.enable_cache(str(CACHE_DIR))
 
 
+def check_credentials():
+    import os
+    if not os.environ.get("F1_USERNAME") or not os.environ.get("F1_PASSWORD"):
+        print("=" * 60)
+        print("FastF1 requires a free Formula 1 account.")
+        print("1. Sign up at https://account.formula1.com")
+        print("2. Export your credentials:")
+        print("   export F1_USERNAME='your@email.com'")
+        print("   export F1_PASSWORD='yourpassword'")
+        print("=" * 60)
+        raise SystemExit(1)
+
+
 def fetch_lap_data(session):
     """Extract lap times, compounds, and stint info for all drivers."""
     laps = session.laps
@@ -122,6 +135,7 @@ def main():
     parser.add_argument("--session", type=str, default="R", help="Session type: FP1, FP2, FP3, Q, R")
     args = parser.parse_args()
 
+    check_credentials()
     setup_cache()
     data = build_session_json(args.year, args.gp, args.session)
 
